@@ -28,13 +28,13 @@
             padding-bottom: 10px;
         }
         .form-group {
-    display: flex;
-    align-items: center;
-    margin-bottom: 15px;
-}
-.col-form-label {
-    font-weight: 600;
-}
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .col-form-label {
+            font-weight: 600;
+        }
         .form-control {
             border-radius: 10px;
             padding: 10px;
@@ -58,141 +58,119 @@
         .form-buttons button {
             width: 48%;
         }
-        #totalAmountCash {
-    font-weight: bold;
-    color: black;
-}
-        
-        #totalAmountOnline{
-    font-weight: bold;
-    color: green;
-}
-       #totalExpensesCash {
-    font-weight: bold;
-    color: purple;
-}
-
-#totalExpensesOnline {
-    font-weight: bold;
-    color: blue;
-}
-
-#totalRemainingCash {
-    font-weight: bold;
-    color: red;
-}
-
-#totalRemainingOnline {
-    font-weight: bold;
-    color: red; /* Light Red */
-}
-
-
+        #totalAmountCash { font-weight: bold; color: black; }
+        #totalAmountOnline { font-weight: bold; color: green; }
+        #totalExpensesCash { font-weight: bold; color: purple; }
+        #totalExpensesOnline { font-weight: bold; color: blue; }
+        #totalRemainingCash, #totalRemainingOnline { font-weight: bold; color: red; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="card">
             <h2 class="text-center">Daily Expenditure Tracker</h2>
-           <form id="expenseForm">
-    <div class="form-group row">
-        <label for="date" class="col-sm-4 col-form-label">Select Date:</label>
-        <div class="col-sm-8">
-            <input type="date" class="form-control" id="date" required>
-        </div>
-    </div>
-    
-    <div class="form-group row">
-        <label for="expenseDetails" class="col-sm-4 col-form-label">Expense Details:</label>
-        <div class="col-sm-8">
-            <input type="text" class="form-control" id="expenseDetails" required>
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <label for="amountCash" class="col-sm-4 col-form-label">Amount (Cash):</label>
-        <div class="col-sm-8">
-            <input type="number" class="form-control" id="amountCash" min="0" required>
-        </div>
-    </div>
-
-    <div class="form-group row">
-        <label for="amountOnline" class="col-sm-4 col-form-label">Amount (Online):</label>
-        <div class="col-sm-8">
-            <input type="number" class="form-control" id="amountOnline" min="0" required>
-        </div>
-    </div>
-
-    <div class="form-buttons d-flex justify-content-between">
-        <button type="submit" class="btn btn-primary">Submit</button>
-        <button type="button" class="btn btn-secondary" id="resetButton">Reset</button>
-    </div>
-</form>
+            <form id="expenseForm">
+                <div class="form-group row">
+                    <label for="date" class="col-sm-4 col-form-label">Select Date:</label>
+                    <div class="col-sm-8">
+                        <input type="date" class="form-control" id="date" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="expenseDetails" class="col-sm-4 col-form-label">Expense Details:</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="expenseDetails" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="amountCash" class="col-sm-4 col-form-label">Amount (Cash):</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="amountCash" min="0" required>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="amountOnline" class="col-sm-4 col-form-label">Amount (Online):</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" id="amountOnline" min="0" required>
+                    </div>
+                </div>
+                <div class="form-buttons d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-secondary" id="resetButton">Reset</button>
+                </div>
+            </form>
 
             <hr>
 
-            <button class="btn btn-info w-100 mt-3" id="toggleSummary">Show Summary</button>
+            <div class="mt-3">
+    <button class="btn btn-info w-100" id="toggleSummary">Show Summary</button>
+    <div id="passwordSection" style="display: none;" class="mt-2">
+        <input type="password" id="summaryPassword" class="form-control" placeholder="Enter Password" autocomplete="off">
+        <button class="btn btn-success w-100 mt-2" id="unlockSummary">Unlock Summary</button>
+    </div>
+</div>
 
-<div id="summarySection" style="display: none;">
-    <hr>
-   <!--<h4 class="text-center">Summary</h4>-->
-    
-    <div class="form-group row">
-        <label for="totalAmountCash" class="col-sm-6 col-form-label">Total Amount (Cash):</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" id="totalAmountCash" readonly>
+
+            <div id="summarySection" style="display: none;">
+                <hr>
+                <div class="form-group row">
+                    <label class="col-sm-6 col-form-label">Total Amount (Cash):</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="totalAmountCash" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-6 col-form-label">Total Amount (Online):</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="totalAmountOnline" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-6 col-form-label">Total Expenses (Cash):</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="totalExpensesCash" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-6 col-form-label">Total Expenses (Online):</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="totalExpensesOnline" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-6 col-form-label">Total Remaining (Cash):</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="totalRemainingCash" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-6 col-form-label">Total Remaining (Online):</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="totalRemainingOnline" readonly>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    
-    <div class="form-group row">
-        <label for="totalAmountOnline" class="col-sm-6 col-form-label">Total Amount (Online):</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" id="totalAmountOnline" readonly>
-        </div>
-    </div>
-    
-    <div class="form-group row">
-    <label for="totalExpensesCash" class="col-sm-6 col-form-label">Total Expenses (Cash):</label>
-    <div class="col-sm-6">
-        <input type="text" class="form-control" id="totalExpensesCash" readonly>
-    </div>
-</div>
-
-<div class="form-group row">
-    <label for="totalExpensesOnline" class="col-sm-6 col-form-label">Total Expenses (Online):</label>
-    <div class="col-sm-6">
-        <input type="text" class="form-control" id="totalExpensesOnline" readonly>
-    </div>
-</div>
-
-<div class="form-group row">
-    <label for="totalRemainingCash" class="col-sm-6 col-form-label">Total Remaining (Cash):</label>
-    <div class="col-sm-6">
-        <input type="text" class="form-control" id="totalRemainingCash" readonly>
-    </div>
-</div>
-
-<div class="form-group row">
-    <label for="totalRemainingOnline" class="col-sm-6 col-form-label">Total Remaining (Online):</label>
-    <div class="col-sm-6">
-        <input type="text" class="form-control" id="totalRemainingOnline" readonly>
-    </div>
-</div>
-
-</div>
-
 
     <script>
-      document.getElementById("toggleSummary").addEventListener("click", function () {
+       document.getElementById("toggleSummary").addEventListener("click", function () {
+    document.getElementById("passwordSection").style.display = "block";
+});
+
+document.getElementById("unlockSummary").addEventListener("click", function () {
+    const enteredPassword = document.getElementById("summaryPassword").value;
+    const correctPassword = "mySecret123"; // Set your password here
     const summarySection = document.getElementById("summarySection");
-    if (summarySection.style.display === "none") {
+
+    if (enteredPassword === correctPassword) {
         summarySection.style.display = "block";
-        this.textContent = "Hide Summary";
+        document.getElementById("passwordSection").style.display = "none";
     } else {
-        summarySection.style.display = "none";
-        this.textContent = "Show Summary";
+        alert("Incorrect password! Please try again.");
     }
 });
+
 
         document.getElementById('expenseForm').addEventListener('submit', function (e) {
             e.preventDefault();
