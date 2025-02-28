@@ -63,6 +63,26 @@
         #totalExpensesCash { font-weight: bold; color: purple; }
         #totalExpensesOnline { font-weight: bold; color: blue; }
         #totalRemainingCash, #totalRemainingOnline { font-weight: bold; color: red; }
+        
+        #globalIME {
+    font-weight: bold;
+    color: blue;
+    }
+
+      #rd1 {
+    font-weight: bold;
+    color: orange;
+      }
+
+    #rd2 {
+    font-weight: bold;
+    color: purple;
+    }
+
+    #rd3 {
+    font-weight: bold;
+    color: black;
+    }
     </style>
 </head>
 <body>
@@ -149,6 +169,32 @@
                         <input type="text" class="form-control" id="totalRemainingOnline" readonly>
                     </div>
                 </div>
+                
+                <hr>
+                <div class="form-group row">
+                    <label class="col-sm-6 col-form-label">Global IME Bank:</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="globalIME" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-6 col-form-label">RD-1:</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="rd1" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-6 col-form-label">RD-2:</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="rd2" readonly>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-6 col-form-label">RD-3:</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" id="rd3" readonly>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -218,7 +264,7 @@ document.getElementById("unlockSummary").addEventListener("click", function () {
         });
 
         function fetchSheetData() {
-            const url = 'https://script.google.com/macros/s/AKfycbzkqCeZ3tl7ypUOP6SrQmlVBGSEJD1V6URFTmt0zvdi_Tw2hEdr_5n9mnmTD_ZxvHo55Q/exec';
+            const url = 'https://script.google.com/macros/s/AKfycbwIU-Pj_gqEOUkBCO26zsC3T1CAUQmmwbOh5rzH8b9L_H9YpTb_vXqvrwZdl4LMzTNvWg/exec';
             
             fetch(url)
                 .then(response => response.json())
@@ -229,6 +275,10 @@ document.getElementById("unlockSummary").addEventListener("click", function () {
                     document.getElementById('totalRemainingCash').value = data.H2 || 0;
                     document.getElementById('totalAmountOnline').value = data.J1 || 0;
                     document.getElementById('totalAmountCash').value = data.J2 || 0;
+                    document.getElementById('globalIME').value = data.K2 || 0; // Fetch from K2
+                    document.getElementById('rd1').value = data.L2 || 0;     // Fetch from L2
+                    document.getElementById('rd2').value = data.M2 || 0;     // Fetch from M2
+                    document.getElementById('rd3').value = data.N2 || 0;     // Fetch from N2
                 })
                 .catch(error => console.error('Error fetching data:', error));
         }
