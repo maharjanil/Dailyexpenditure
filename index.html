@@ -83,6 +83,18 @@
     font-weight: bold;
     color: black;
     }
+    
+    /* Custom styles for the Total field */
+#total {
+    font-weight: bold;
+    color: red;
+}
+
+/* Style for the Total label */
+.total-label {
+    color: red;
+    font-weight: bold;
+}
     </style>
 </head>
 <body>
@@ -171,6 +183,7 @@
                 </div>
                 
                 <hr>
+                <hr>
                 <div class="form-group row">
                     <label class="col-sm-6 col-form-label">Global IME Bank:</label>
                     <div class="col-sm-6">
@@ -195,6 +208,12 @@
                         <input type="text" class="form-control" id="rd3" readonly>
                     </div>
                 </div>
+                <div class="form-group row">
+                      <label class="col-sm-6 col-form-label" style="color: red; font-weight: bold;">Total:</label>
+                      <div class="col-sm-6">
+                          <input type="text" class="form-control" id="total" readonly style="color: red; font-weight: bold;">
+                       </div>
+                  </div>
             </div>
         </div>
     </div>
@@ -264,7 +283,7 @@ document.getElementById("unlockSummary").addEventListener("click", function () {
         });
 
         function fetchSheetData() {
-            const url = 'https://script.google.com/macros/s/AKfycbwIU-Pj_gqEOUkBCO26zsC3T1CAUQmmwbOh5rzH8b9L_H9YpTb_vXqvrwZdl4LMzTNvWg/exec';
+            const url = 'https://script.google.com/macros/s/AKfycbzmzxYzoyhDgRdPYhnxZX3U0KJkaxPff89ALLKDfAD1kQTh7FFRLbyQrIZrcv7PimDY_A/exec';
             
             fetch(url)
                 .then(response => response.json())
@@ -279,6 +298,7 @@ document.getElementById("unlockSummary").addEventListener("click", function () {
                     document.getElementById('rd1').value = data.L2 || 0;     // Fetch from L2
                     document.getElementById('rd2').value = data.M2 || 0;     // Fetch from M2
                     document.getElementById('rd3').value = data.N2 || 0;     // Fetch from N2
+                    document.getElementById('total').value = data.O2 || 0;   // Fetch from O2
                 })
                 .catch(error => console.error('Error fetching data:', error));
         }
